@@ -11,6 +11,18 @@ docker-compose up 1.7.0-otp-21
 docker-compose up 1.6.6-otp-21
 ```
 
+Or
+
+```
+bash -c '
+  rm -rf _build deps \
+  && export MIX_ENV=prod \
+  && mix deps.get && mix deps.compile && MIX_ENV=test mix deps.compile \
+  && mix compile && MIX_ENV=test mix compile \
+  && MIX_ENV=test mix cmd mix test
+'
+```
+
 ## Results
 
 ### 1.7.1-otp-21
